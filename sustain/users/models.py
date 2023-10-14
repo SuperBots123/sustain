@@ -37,6 +37,13 @@ class Sustainer(models.Model):
         null=True,
         blank=True,
     )
+    following = models.ManyToManyField(
+        to='self', 
+        related_name='followers', 
+        symmetrical=False,
+        null=True,
+        blank=True,
+    )
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
