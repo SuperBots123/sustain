@@ -61,12 +61,25 @@ class ChallengeView(TemplateView):
 
             return render(request, self.template_name, context)
         else:
-            challenge_location = request.POST.get('location')
-            challenge_picture = request.POST.get('profile-picture')
+            import urllib.request
+            import os
             curr_pk = request.POST.get('challenge_pk')
             challenge = Challenge.objects.get(id=curr_pk)
+            challenge_location = request.POST.get('location')
+            if 'picture' in request.FILES:
+                challenge_picture = request.FILES['picture']
+                folder_path = 'static/challenge_images'
+                filename = f'{challenge.pk}.jpg'
+                file_path = os.path.join(folder_path, filename)
+                with open(file_path, 'wb+') as destination:
+                    for chunk in challenge_picture.chunks():
+                        destination.write(chunk)
+                print(challenge_picture)
+            else:
+                print("NO PICTURE")
             challenge.latitude = float(challenge_location.split(",")[0].strip())
             challenge.longitude = float(challenge_location.split(",")[1].strip())
+            challenge.image = challenge_picture
             challenge.time = datetime.now()
             challenge.completionStatus = True
             challenge.save()
