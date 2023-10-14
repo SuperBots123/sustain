@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 
-from .models import Post, Sustainer
+from .models import Sustainer
+from challenges.models import Challenge
 
 
 class FeedView(TemplateView):
@@ -11,7 +12,7 @@ class FeedView(TemplateView):
         if not request.user.is_authenticated:
             return redirect('users:login')
         friends = request.user.sustainer.following.all()
-        context = {'posts': Post.objects.filter(sustainer__in=friends)}
+        context = {'posts': Challenge.objects.filter(sustainer__in=friends, completionStatus=True)}
         return render(request, self.template_name, context)
     
     def post(request):
