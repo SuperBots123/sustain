@@ -1,15 +1,41 @@
 from django.db import models
 from users.models import Sustainer
 
-# Create your models here.
+
 class Challenge(models.Model):
-    cause = models.CharField(max_length=100)
-    description = models.CharField(max_length=1000)
-    points = models.IntegerField(default=0)
-    time = models.DateField(auto_now_add=True)
-    latitude = models.FloatField(null=True, blank=True)
-    longitude = models.FloatField(null=True, blank=True)
-    completionStatus = models.BooleanField(default=False)
+    cause = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+    description = models.CharField(
+        max_length=1000,
+        null=True,
+        blank=True,
+    )
+    points = models.IntegerField(
+        default=0,
+        null=True,
+        blank=True,
+    )
+    time = models.TimeField(
+        auto_now_add=True,
+        null=True,
+        blank=True,
+    )
+    latitude = models.FloatField(
+        null=True,
+        blank=True,
+    )
+    longitude = models.FloatField(
+        null=True,
+        blank=True,
+    )
+    completionStatus = models.BooleanField(
+        default=False,
+        null=True,
+        blank=True,
+    )
     sustainer = models.ForeignKey(
         to=Sustainer,
         on_delete=models.CASCADE,

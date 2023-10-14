@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .forms import RegistrationForm
 from .models import Sustainer
+from challenges.models import Challenge
 
 
 class LoginView(TemplateView):
@@ -47,8 +48,17 @@ class RegisterView(TemplateView):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            user_profile = Sustainer(user=user, joined=datetime.date.today())
+            user_profile = Sustainer(user=user)
+            
             user_profile.save()
+            user_profile.following.add(user_profile)
+            new_challenge = Challenge(sustainer=user_profile,
+                                      description="Joined sustain!",
+                                      time=datetime.now(),
+                                      completionStatus=True,
+                                      latitude=33.7756,
+                                      longitude=84.3963)
+            new_challenge.save()
             return redirect('feed:feed')
         for error in form.errors:
             print(error) 

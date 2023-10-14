@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Challenge
@@ -65,6 +67,7 @@ class ChallengeView(TemplateView):
             challenge = Challenge.objects.get(id=curr_pk)
             challenge.latitude = float(challenge_location.split(",")[0].strip())
             challenge.longitude = float(challenge_location.split(",")[1].strip())
+            challenge.time = datetime.now()
             challenge.completionStatus = True
             challenge.save()
             return redirect('challenges:challenges')
