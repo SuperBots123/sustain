@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Challenge
+from keys.openAIKey import OPEN_AI_VAR
 
 # Create your views here.
 class ChallengeView(TemplateView):
@@ -16,7 +17,6 @@ class ChallengeView(TemplateView):
             hours_to_help = request.POST.get('hours-dropdown')
             # Do something with the values
             import openai
-            OPEN_AI_VAR = "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"
             openai.api_key = OPEN_AI_VAR
 
             alignmentPrompt = """
