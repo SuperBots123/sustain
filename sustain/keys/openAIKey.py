@@ -1,1 +1,0 @@
-OPEN_AI_VAR = "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"
