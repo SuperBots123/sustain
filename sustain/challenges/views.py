@@ -16,7 +16,7 @@ class ChallengeView(TemplateView):
             hours_to_help = request.POST.get('hours-dropdown')
             # Do something with the values
             import openai
-            OPEN_AI_VAR = "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"
+            OPEN_AI_VAR = "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"
             openai.api_key = OPEN_AI_VAR
 
             alignmentPrompt = """
