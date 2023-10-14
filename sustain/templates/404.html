@@ -1,5 +1,7 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block style %}
 <!DOCTYPE html>
-<html lang="en">
 
     <head>
         <meta charset="UTF-8" />
@@ -12,9 +14,8 @@
     <body>
         <div class="d-flex align-items-center justify-content-center vh-100">
             <div class="text-center row">
-                <div class="col-md-6">
-                    <img src="../static/img/OIG.png" alt=""
-                        class="img-fluid">
+                <div class="col-md-4">
+                    <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="400">
                 </div>
                 <div class="col-md-6 mt-5">
                     <p class="fs-3"> <span class="text-danger">Oops!</span> Page not found.</p>
@@ -29,3 +30,4 @@
     </body>
 
 </html>
+{% endblock %}
