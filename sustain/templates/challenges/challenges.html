@@ -10,7 +10,32 @@
       <div class="row no-gutters">
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Cause: {{challenge.cause}}</h5>
+            {% if challenge.cause == 'Mental_Health' %}
+              <h5 class="card-title">Cause: Mental Health</h5>
+            {% elif challenge.cause == 'green_spaces' %}
+              <h5 class="card-title">Cause: Green Spaces</h5>
+            {% elif challenge.cause == 'clean_air_water' %}
+              <h5 class="card-title">Cause: Clean Air and Water</h5>
+            {% elif challenge.cause == 'sustainable_transportation' %}
+              <h5 class="card-title">Cause: Sustainable Transportation</h5>
+            {% elif challenge.cause == 'climate_action' %}
+              <h5 class="card-title">Cause: Climate Action</h5>
+            {% elif challenge.cause == 'healthy_food_systems' %}
+              <h5 class="card-title">Cause: Healthy Food Systems</h5>
+            {% elif challenge.cause == 'energy_efficiency' %}
+              <h5 class="card-title">Cause: Energy Efficiency</h5>
+            {% elif challenge.cause == 'reduced_noise_pollution' %}
+              <h5 class="card-title">Cause: Reduced Noise Pollution</h5>
+            {% elif challenge.cause == 'waste_reduction' %}
+              <h5 class="card-title">Cause: Waste Reduction</h5>
+            {% elif challenge.cause == 'sustainable_housing' %}
+              <h5 class="card-title">Cause: Sustainable Housing</h5>
+            {% elif challenge.cause == 'community_engagement' %}
+              <h5 class="card-title">Cause: Community Engagement</h5>
+            {% else %}
+              <h5 class="card-title">Cause: None</h5>
+            {% endif %}
+
             <p class="card-text">{{challenge.description}}</p>
             <p class="card-text" style="color: red;">Time remaining: 2 hours</p>
             <p class="card-text" style="color: blue;">Points: 100</p>
