@@ -24,7 +24,7 @@
                 <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a></li>
                 <li><a class="dropdown-item" href="{%url 'users:logout'%}" style="color: red;">Logout</a></li>
               </ul>
             </li>

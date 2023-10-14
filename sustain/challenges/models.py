@@ -7,6 +7,8 @@ class Challenge(models.Model):
     description = models.CharField(max_length=1000)
     points = models.IntegerField(default=0)
     time = models.DateField(auto_now_add=True)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
     completionStatus = models.BooleanField(default=False)
     sustainer = models.ForeignKey(
         to=Sustainer,
