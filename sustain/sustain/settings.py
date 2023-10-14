@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'feed',
     'map',
     'users',
+    'profiles',
+    'challenges',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
