@@ -1,0 +1,88 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block title %}
+  <title>sustain | challenges</title>
+{% endblock %}
+
+{% block style %}
+  <!-- {% for challenge in challenges %}
+  <div class="card" style="width: 100%;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Cause: {{ challenge.user.cause }}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Complete Challenge</a>
+    </div>
+  </div>
+  {% endfor %} -->
+  {% for challenge in challenges %}
+    <div class="card" style="width: 100%;">
+      <div class="row no-gutters">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Cause: {{challenge.cause}}</h5>
+            <p class="card-text">{{challenge.description}}</p>
+            <p class="card-text" style="color: red;">Time remaining: 2 hours</p>
+            <p class="card-text" style="color: blue;">Points: 100</p>
+            <a href="{% url 'challenges:complete_challenges' challenge.pk %}" class="btn btn-primary">Complete Challenge</a>
+            <a href="{% url 'challenges:delete_challenges' challenge.pk %}" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="400">
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="text-center mt-4">
+    <button style="background-color: #698C41; color: white;" type="button" class="btn" data-toggle="modal" data-target="#createChallengeModal">Create Challenge</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="createChallengeModal" tabindex="-1" role="dialog" aria-labelledby="createChallengeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form method="post">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="createChallengeModalLabel">Create Challenge</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>I want to support 
+              <select name="support-dropdown" id="support-dropdown">
+                <option value="Mental_Health">Mental Health</option>
+                <option value="green_spaces">Green Spaces</option>
+                <option value="clean_air_water">Clean Air and Water</option>
+                <option value="sustainable_transportation">Sustainable Transportation</option>
+                <option value="climate_action">Climate Action</option>
+                <option value="healthy_food_systems">Healthy Food Systems</option>
+                <option value="energy_efficiency">Energy Efficiency</option>
+                <option value="reduced_noise_pollution">Reduced Noise Pollution</option>
+                <option value="waste_reduction">Waste Reduction</option>
+                <option value="sustainable_housing">Sustainable Housing</option>
+                <option value="community_engagement">Community Engagement</option>
+              </select> 
+              and I have 
+              <select name="hours-dropdown" id="hours-dropdown">
+                <option value="1">1 hour</option>
+                <option value="2">2 hours</option>
+                <option value="3">3 hours</option>
+                <option value="4">4 hours</option>
+                <option value="5">5 hours</option>
+              </select> 
+              to help.
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Accept</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
