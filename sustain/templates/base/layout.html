@@ -1,40 +1,50 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block navbar %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary container" id="NavbarContainer">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="{% static 'img/sustain_logo.png' %}" alt="Sustain Logo" height="60">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{%url 'feed:feed'%}">Feed</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{%url 'challenges:challenges'%}">Challenges</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="{%url 'users:logout'%}" style="color: red;">Logout</a></li>
+<div class="container">
+  <div class="profile-page tx-13">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary container sticky-top" id="NavbarContainer">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/sustain_logo.png' %}" alt="Sustain Logo" height="60">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{%url 'feed:feed'%}">Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'challenges:challenges'%}">Challenges</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{%url 'users:logout'%}" style="color: red;">Logout</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+        </div>
+      </div>
+    </nav>
+  </container>
+</div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+  #NavbarContainer {
+    background-color: #fcfaf0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    position: fixed;
+  }
+
   .nav-item {
     display: flex;
     align-items: center;
@@ -50,8 +60,8 @@
   }
 
   .profile-picture {
-            border: 3px solid #698C41;
-            border-radius: 50%;
+    border: 3px solid #698C41;
+    border-radius: 50%;
   }
 </style>
   <script type="text/javascript"></script>
