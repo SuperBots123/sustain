@@ -377,7 +377,7 @@
               </div>
             
             <div class="card-body">
-              <p class="mb-3 tx-14">{{ post.text }}</p>
+              <p class="mb-3 tx-14">{{ post.sustainer.user.first_name }} completed a new challenge - {{ post.description }}</p>
               <img class="img-fluid" src="../../../assets/images/sample2.jpg" alt />
             </div>
             <div class="card-footer">
@@ -404,8 +404,9 @@
                 </a>
               </div>
             </div>
-            {% endfor %}
+            
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
