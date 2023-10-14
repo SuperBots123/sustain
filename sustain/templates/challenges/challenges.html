@@ -67,7 +67,30 @@
           </div>
         </div>
         <div class="col-md-4">
-          <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="258">
+          {% if challenge.cause == 'Mental_Health' %}
+            <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'green_spaces' %}
+            <img src="{% static 'img/cause_green_spaces.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'clean_air_water' %}
+            <img src="{% static 'img/cause_clean_air_water.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'sustainable_transportation' %}
+            <img src="{% static 'img/cause_sustainable_transportation.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'climate_action' %}
+            <img src="{% static 'img/cause_climate_action.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'healthy_food_systems' %}
+            <img src="{% static 'img/cause_healthy_food_systems.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'energy_efficiency' %}
+            <img src="{% static 'img/cause_energy_efficiency.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'reduced_noise_pollution' %}
+            <img src="{% static 'img/cause_muscular_wood_guy.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'waste_reduction' %}
+            <img src="{% static 'img/cause_waste_reduction.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'sustainable_housing' %}
+            <img src="{% static 'img/cause_muscular_wood_guy.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'community_engagement' %}
+            <img src="{% static 'img/cause_helping_the_needy.png' %}" class="card-img float-right" alt="..." height="258">
+          {% endif %}
+          
         </div>
       </div>
     </div>
