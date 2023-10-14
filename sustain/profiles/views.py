@@ -8,9 +8,9 @@ class ProfileView(TemplateView):
     template_name = 'profiles/profile.html'
     def get(self, request):
             # self.sustainer.user
-        sustainer_challenges = Challenge.objects.filter(sustainer=request.user.sustainer)
+        challenges = Challenge.objects.filter(sustainer=request.user.sustainer)
         context = {
-            'sustainer_challenges':sustainer_challenges
+            'challenges':challenges
         }
         return render(request, self.template_name, context)
         

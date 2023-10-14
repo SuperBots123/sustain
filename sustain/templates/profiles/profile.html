@@ -12,30 +12,91 @@
       #main-container {
         display: flex;
         height: 100vh;
+        justify-content: start;
+        align-items: flex-start;
       }
       #map-container {
         flex: 1;
         display: flex;
         justify-content: left;
-        align-items: center;
+        align-items: start;
       }
       #map {
-        width: 500px;
-        height: 500px;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
         overflow: hidden;
+      }
+      #challenges-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
       }
       body {
         background-color: #faf6e7;
       }
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #f2f4f9;
+        border-radius: 0.25rem;
+      }
+      
+      .card-wrapper {
+        display: flex;
+        flex-direction: row;
+      }
+      .card-equal {
+        flex: 1;
+      }
+      
     </style>
   </head>
   <body>
-    <div id="main-container">
-    <div id="map-container">
-      <div id="map"></div>
+<!-- Main Container -->
+<div id="main-container">
+  <!-- Outer Map Card Container -->
+  <div class="card" style="flex-direction: row;">
+    <div class="card-body">
+      <!-- Map Container -->
+      <div id="map-container">
+        <div class="card" style="background-color: white;">
+          <p class="font-monospace text-center">{{ user.first_name }}'s challenges</p>
+          <div class="card-body">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inner Challenges Card Container -->
+      <div class="card">
+        <div class="card-body">
+          <div id="challenges-container">
+            {% for challenge in challenges %}
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p class="font-monospace text-center">Lat: {{ challenge.latitude }}, Lng: {{ challenge.longitude }}</p>
+                  <p class="font-monospace text-center">Cause: {{ challenge.cause }}</p>
+                  <p class="font-monospace text-center">Description: {{ challenge.description }}</p>
+                </div>
+              </div>
+            {% empty %}
+              <p class="font-monospace text-center">No challenges found.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-    <div id = "main-container">
+  </div>
+</div>
+
     <script>
       function initMap(customMapStyles, selectedStyle) {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -50,16 +111,17 @@
         });
 
         var challenges = [
-            {% for challenge in sustainer_challenges %}
-            {lat: {{ challenge.latitude }}, lng: {{ challenge.longitude }}, name: "{{ challenge.description }}"},
+            {% for challenge in challenges %}
+            {lat: {{ challenge.latitude }}, lng: {{ challenge.longitude }}, desc: "{{ challenge.description }}"},
             {% endfor %}
         ];
           // Create a LatLngBounds object
           var bounds = new google.maps.LatLngBounds();
 
           challenges.forEach(function(challenge) {
+            console.log(challenge);
               var marker = new google.maps.Marker({
-                  position: challenge,
+                  position: new google.maps.LatLng(challenge.lat, challenge.lng),
                   map: map
               });
 
@@ -67,7 +129,7 @@
               bounds.extend(marker.getPosition());
 
               var infoWindow = new google.maps.InfoWindow({
-                  content: challenge.name
+                  content: challenge.desc
               });
 
               marker.addListener('click', function() {
