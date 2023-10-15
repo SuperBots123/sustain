@@ -12,6 +12,5 @@ done
 # Remove the SQLite database
 echo "Removing SQLite database"
 rm db.sqlite3  # Replace with your actual database name if different
-
 # Done
 echo "Cleanup complete."
