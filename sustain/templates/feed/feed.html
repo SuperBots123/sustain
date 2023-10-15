@@ -359,49 +359,67 @@
               <div class="latest-photos">
                 <div class="row">
                   <div class="col-md-4">
-                    <figure>
-                      <img id="med1" class="img-fluid" src="{% static 'img/medal1.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 0 %}
+                      <figure>
+                        <img id="med1" class="img-fluid" src="{% static 'img/medal1.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure>
-                      <img class="img-fluid" src="{% static 'img/medal2.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 2 %}
+                      <figure>
+                        <img id="med2" class="img-fluid" src="{% static 'img/medal2.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure>
-                      <img class="img-fluid" src="{% static 'img/medal3.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 4 %}
+                      <figure>
+                        <img id="med3" class="img-fluid" src="{% static 'img/medal3.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure>
-                      <img class="img-fluid" src="{% static 'img/medal4.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 6 %}
+                      <figure>
+                        <img id="med4" class="img-fluid" src="{% static 'img/medal4.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure>
-                      <img class="img-fluid" src="{% static 'img/medal5.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 8 %}
+                      <figure>
+                        <img id="med5" class="img-fluid" src="{% static 'img/medal5.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure>
-                      <img class="img-fluid" src="{% static 'img/medal6.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 10 %}
+                      <figure>
+                        <img id="med6" class="img-fluid" src="{% static 'img/medal6.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure class="mb-0">
-                      <img class="img-fluid" src="{% static 'img/medal7.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 12 %}
+                      <figure>
+                        <img id="med7" class="img-fluid" src="{% static 'img/medal7.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure class="mb-0">
-                      <img class="img-fluid" src="{% static 'img/medal8.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 14 %}
+                      <figure>
+                        <img id="med8" class="img-fluid" src="{% static 'img/medal8.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                   <div class="col-md-4">
-                    <figure class="mb-0">
-                      <img class="img-fluid" src="{% static 'img/medal9.png' %}" alt />
-                    </figure>
+                    {% if user.sustainer.challenges_completed > 16 %}
+                      <figure>
+                        <img id="med9" class="img-fluid" src="{% static 'img/medal9.png' %}" alt />
+                      </figure>
+                    {% endif %}
                   </div>
                 </div>
               </div>
