@@ -173,19 +173,16 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+* John Donahoe - jdonahoe8@gatech.edu
+
+* Cole McGinnis - cmcginnis8@gatech.edu
+
+* Tawfiq Mohammed - tawfiq@gatech.edu
+
+* Garrett Meek - garrettmeek@gatech.edu
 
 Project Link: [https://github.com/SuperBots123/sustain](https://github.com/SuperBots123/sustain)
 
@@ -196,9 +193,7 @@ Project Link: [https://github.com/SuperBots123/sustain](https://github.com/Super
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Built for HackGT X](https://hack.gt/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
