@@ -2,6 +2,8 @@
 {% load static %}
 {% block navbar %}
 
+
+
 <div class="container">
   <div class="profile-page tx-13">
     <nav class="navbar navbar-expand-lg bg-body-tertiary container sticky-top" id="NavbarContainer">
@@ -16,26 +18,16 @@
           <ul class="navbar-nav">
             
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{%url 'feed:feed'%}">Feed</a>
+              <a class="nav-link active" aria-current="page" href="{%url 'feed:feed'%}">feed</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{%url 'challenges:challenges'%}">Challenges</a>
+              <a class="nav-link" href="{%url 'challenges:challenges'%}">challenges</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{%url 'friends:friends'%}">People</a>
+              <a class="nav-link" href="{% url 'profiles:profile' %}">profile</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% if user.sustainer.profile_picture %}
-                  <img src="{{ user.sustainer.profile_picture.url }}" alt="Profile Picture" height="50" class="profile-picture">
-                {% else %}
-                  <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
-                {% endif %}
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="{%url 'users:logout'%}" style="color: red;">Logout</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="btn btn-success" href="{%url 'users:logout'%}">logout</a>
             </li>
           </ul>
         </div>
@@ -48,7 +40,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
   #NavbarContainer {
-    background-color: #fcfaf0;
+    background-color: #FFFFFF;
     border-bottom: 1px solid #ccc;
     width: 100%;
     position: fixed;
@@ -61,18 +53,17 @@
   }
 
   a {
-    color: #698C41;
-    font-size: 18pt;
+    color: #28A745;
+    font-size: 13pt;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .profile-picture {
-    border: 3px solid #698C41;
     border-radius: 50%;
-    width: 75px;  /* Set the width */
-    height: 75px;  /* Set the height */
+    width: 40px;  /* Set the width */
+    height: 40px;  /* Set the height */
     object-fit: cover;  /* This will make sure the image covers the entire area */
   }
 
