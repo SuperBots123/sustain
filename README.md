@@ -34,9 +34,9 @@
     <br />
     <a href="https://github.com/SuperBots123/sustain">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/SuperBots123/sustain/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/SuperBots123/sustain/issues">Request Feature</a>
   </p>
 </div>
 
