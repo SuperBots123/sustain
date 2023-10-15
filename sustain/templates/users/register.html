@@ -1,30 +1,36 @@
 {% extends 'base/base.html' %}
-
+{% load static %}
 {% block title %}
-  <title>sustian | Sign Up</title>
+  <title>sustain | Sign Up</title>
 {% endblock %}
 
 {% block style %}
   <style>
     .gradient-custom {
       /* fallback for old browsers */
-      background: #6a11cb;
+      background: rgba(252, 250, 240, 1);
     
       /* Chrome 10-25, Safari 5.1-6 */
-      background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+      background: -webkit-linear-gradient(to bottom, rgba(252, 250, 240, 1), rgba(37, 117, 252, 1));
     
       /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+      background: linear-gradient(to bottom, rgba(252, 250, 240, 1), rgba(37, 117, 252, 1));
+    }
+    body, html {
+      overflow: hidden;
     }
   </style>
 {% endblock %}
 
 {% block layout %}
-  <form method="POST">
+  <section class="vh-100 gradient-custom">
     {% csrf_token %}
-    <section class="vh-100 gradient-custom">
+    <form method="POST">
       <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex justify-content-between h-100">
+          <img>
+            <img src="{% static 'img/sustain_logo.png' %}" alt="Sustain Logo" height="150" class="profile-picture" style="margin-top: 240px">
+          </img>
           <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card bg-dark text-white" style="border-radius: 1rem;">
               <div class="card-body p-5 text-center">
@@ -78,6 +84,6 @@
           </div>
         </div>
       </div>
-    </section>
-  </form>
+    </form>
+  </section>
 {% endblock %}
