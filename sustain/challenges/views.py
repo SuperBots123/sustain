@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Challenge
 from keys.openAIKey import OPEN_AI_VAR
+from django.core.files.storage import default_storage
+
 
 # Create your views here.
 class ChallengeView(TemplateView):
@@ -75,11 +77,13 @@ class ChallengeView(TemplateView):
                     for chunk in challenge_picture.chunks():
                         destination.write(chunk)
                 print(challenge_picture)
+                challenge.image = challenge_picture  # Move this line here
             else:
                 print("NO PICTURE")
+
             challenge.latitude = float(challenge_location.split(",")[0].strip())
             challenge.longitude = float(challenge_location.split(",")[1].strip())
-            challenge.image = challenge_picture
+            # challenge.image = challenge_picture
             challenge.time = datetime.now()
             challenge.completionStatus = True
             challenge.save()
