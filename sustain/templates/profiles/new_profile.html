@@ -184,10 +184,12 @@
     }
 
     #map {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        aspect-ratio: 1 / 1;  /* defining the aspect ratio of the image */
+        object-fit: cover;  
         border-radius: 50%;
         overflow: hidden;
+        margin-bottom: 10px;
       }
   </style>
 {% endblock %}
@@ -197,7 +199,7 @@
   <div class="container bootdey">
     <div class="content-page">
       <div class="profile-banner">
-        <div class="col-sm-3 avatar-container">
+        <div class="col-sm-4 avatar-container">
           {% if user.sustainer.profile_picture %}
             <img src="{{ user.sustainer.profile_picture.url }}" class="img-circle profile-avatar" alt="User avatar" />
           {% else %}
@@ -211,7 +213,7 @@
       </div>
       <div class="content">
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <!-- Begin user profile -->
             <div class="text-center user-profile-2" style="margin-top:120px"></div>
             <!-- End div .box-info -->
@@ -223,13 +225,6 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                       <h6 class="card-title mb-0">About</h6>
                       <div class="dropdown">
-                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-lg text-muted pb-3px">
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item d-flex align-items-center" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 icon-sm mr-2">
@@ -295,7 +290,7 @@
           </div>
           <!-- End div .col-sm-4 -->
 
-          <div class="col-sm-9">
+          <div class="col-sm-8">
             <div class="widget widget-tabbed">
               <!-- Tab panes -->
               <div class="tab-content">
@@ -379,9 +374,6 @@
                 </div>
                 <!-- End div .tab-pane -->
                 <!-- End Tab timeline -->
-
-                
-              <!-- End div .tab-content -->
             </div>
             <!-- End div .box-info -->
           </div>
