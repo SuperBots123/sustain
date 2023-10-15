@@ -98,6 +98,12 @@ class Sustainer(models.Model):
     points = models.IntegerField(
         default=0,
     )
+
+    challenges_completed = models.IntegerField(
+        default=0,
+        null=True,
+        blank=True,
+    )
     
     profile_picture = models.ImageField(
         upload_to='profile_pics/',  # Directory within MEDIA_ROOT where images will be saved
