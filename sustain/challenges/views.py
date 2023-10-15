@@ -55,7 +55,7 @@ class ChallengeView(TemplateView):
             new = Challenge(cause=cause, description=parsedChallenge, points=time_limit, sustainer=request.user.sustainer)
             new.save()
             context = {
-                'challenges': Challenge.objects.filter(sustainer=request.user.sustainer),
+                'challenges': Challenge.objects.filter(sustainer=request.user.sustainer, completionStatus=False),
             }
             
 

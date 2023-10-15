@@ -1,5 +1,11 @@
+
 {% extends 'base/layout.html' %}
+
+{% load humanize %}
+
+
 {% load static %}
+
 {% block title %}
   <title>sustain | feed</title>
 {% endblock %}
@@ -301,36 +307,15 @@
         <div class="col-md-12 grid-margin">
         </div>
         <div class="col-md-12">
-          {% if not posts %}
-          <div class="card rounded">
-            <div class="card-header">
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                  <div class="ml-2">
-                    <p>Your feed is empty!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          
-          <div class="card-body">
-
-            <p class="mb-3 tx-14">Click here to search for friends to follow</p>
-            <p class="mb-3 tx-14">Make a post</p>
-          </div>
-          
-          {% endif %}
-
-
           {% for post in posts %}
-            <div class="card rounded">
+            <div class="card rounded mb-3">
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt />
                     <div class="ml-2">
                       <p>{{ post.sustainer.user.first_name }} {{ post.sustainer.user.last_name }}</p>
-                      <p class="tx-11 text-muted">5 min ago</p>
+                      <p class="tx-11 text-muted">{{ post.time|naturaltime }}</p>
                     </div>
                   </div>
                   <div class="dropdown">
