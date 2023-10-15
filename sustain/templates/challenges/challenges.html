@@ -5,6 +5,77 @@
 {% endblock %}
 
 {% block style %}
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Company Challenge: Chipotle</h5>
+        <p class="card-text">Healthy Mindest: Send a picture of you eating an organic meal for free chips and guac</p>
+        <div class="align-items-bottom">
+          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#completeChallengeModal">Complete Challenge</a>
+          <a href="" class="btn btn-primary" style="background-color: red;">Delete</a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="completeChallengeModal" tabindex="-1" role="dialog" aria-labelledby="completeChallengeModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-header">
+                  <h5 class="modal-title" id="completeChallengeModalLabel">Complete Challenge</h5>
+                  
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="profile-picture">Upload Challenge Picture</label>
+                    <input type="file" class="form-control-file" id="challenge-picture" name="picture">
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Current Location</label>
+                    <input type="text" class="form-control" name = "location" id="location" placeholder="Enter your location" readonly>
+                    <button type="button" class="btn btn-primary" onclick="getLocation()">Get Current Location</button>
+                    <input type="number" name="challenge_pk" value="{{ challenge.pk }}" hidden>
+                  </div>
+
+                  <script>
+                    function getLocation() {
+                      if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                      } else {
+                        alert("Geolocation is not supported by this browser.");
+                      }
+                    }
+
+                    function showPosition(position) {
+                      var latitude = position.coords.latitude;
+                      var longitude = position.coords.longitude;
+                      document.getElementById("location").value = latitude + ", " + longitude;
+                    }
+                  </script>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+      <div class="col-md-4">
+        <img src="{% static 'img/chipotle.jpg' %}" class="card-img float-right" alt="..." height="258">
+      </div>
+    </div>
+  </div>
+
+
   {% for challenge in challenges %}
     <div class="card mb-3">
       <div class="row no-gutters">
