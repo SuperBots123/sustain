@@ -95,6 +95,9 @@ class Sustainer(models.Model):
         null=True,
         blank=True,
     )
+    points = models.IntegerField(
+        default=0,
+    )
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'

@@ -57,7 +57,7 @@ class RegisterView(TemplateView):
                                       time=datetime.now(),
                                       completionStatus=True,
                                       latitude=33.7756,
-                                      longitude=84.3963)
+                                      longitude=-84.3963)
             new_challenge.save()
             return redirect('feed:feed')
         for error in form.errors:

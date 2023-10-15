@@ -6,15 +6,16 @@
 
 {% block style %}
   {% for challenge in challenges %}
-    <div class="card" style="width: 100%;">
+    <div class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">Cause: {{challenge.cause}}</h5>
             <p class="card-text">{{challenge.description}}</p>
-            <p class="card-text" style="color: red;">Time remaining: 2 hours</p>
-            <p class="card-text" style="color: blue;">Points: 100</p>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#completeChallengeModal">Complete Challenge</a>
+            <div class="align-items-bottom">
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#completeChallengeModal">Complete Challenge</a>
+              <a href="{% url 'challenges:delete_challenges' challenge.pk %}" class="btn btn-primary" style="background-color: red;">Delete</a>
+            </div>
             <!-- Modal -->
             <div class="modal fade" id="completeChallengeModal" tabindex="-1" role="dialog" aria-labelledby="completeChallengeModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -23,6 +24,7 @@
                     {% csrf_token %}
                     <div class="modal-header">
                       <h5 class="modal-title" id="completeChallengeModalLabel">Complete Challenge</h5>
+                      
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -63,8 +65,9 @@
                 </div>
               </div>
             </div>
-            <a href="{% url 'challenges:delete_challenges' challenge.pk %}" class="btn btn-primary" style="background-color: red;">Delete</a>
+            
           </div>
+          
         </div>
         <div class="col-md-4">
           <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="258">
