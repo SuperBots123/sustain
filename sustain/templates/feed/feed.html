@@ -1,6 +1,10 @@
 
 {% extends 'base/layout.html' %}
+
 {% load humanize %}
+
+
+{% load static %}
 
 {% block title %}
   <title>sustain | feed</title>
@@ -356,10 +360,14 @@
                   </div>
                 </div>
               </div>
-            
             <div class="card-body">
               <p class="mb-3 tx-14">{{ post.sustainer.user.first_name }} completed a new challenge - {{ post.description }}</p>
-              <img class="img-fluid" src="../../../assets/images/sample2.jpg" alt />
+              <script>
+                var pk = "{{ post.pk }}"; // get the pk value from Django template
+                var imgSrc = "{% static 'challenge_images/' %}" + pk + ".jpg"; // construct the image source URL
+                document.getElementById("postImage").src = imgSrc; // set the image source
+              </script>
+              <img id="postImage" class="img-fluid" alt="this is from image: challenge_images/{{ post.pk }}.jpg" />
             </div>
             <div class="card-footer">
               <div class="d-flex post-actions">
@@ -397,52 +405,52 @@
         <div class="col-md-12 grid-margin">
           <div class="card rounded">
             <div class="card-body">
-              <h6 class="card-title">latest photos</h6>
+              <h6 class="card-title">User Awards</h6>
               <div class="latest-photos">
                 <div class="row">
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal1.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal2.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal3.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal4.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal5.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure>
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal6.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure class="mb-0">
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal7.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure class="mb-0">
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal8.png' %}" alt />
                     </figure>
                   </div>
                   <div class="col-md-4">
                     <figure class="mb-0">
-                      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar9.png" alt />
+                      <img class="img-fluid" src="{% static 'img/medal9.png' %}" alt />
                     </figure>
                   </div>
                 </div>

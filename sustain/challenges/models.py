@@ -39,5 +39,10 @@ class Challenge(models.Model):
         to=Sustainer,
         on_delete=models.CASCADE,
     )
+    image = models.ImageField(
+        upload_to='challenge_images/',
+        null=True,
+        blank=True,
+    )
     def __str__(self):
         return f"{self.cause}, {self.description}, {self.points}, {self.time}, {self.completionStatus}, {self.sustainer}"

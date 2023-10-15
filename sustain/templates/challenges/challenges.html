@@ -10,7 +10,32 @@
       <div class="row no-gutters">
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Cause: {{challenge.cause}}</h5>
+            {% if challenge.cause == 'Mental_Health' %}
+              <h5 class="card-title">Cause: Mental Health</h5>
+            {% elif challenge.cause == 'green_spaces' %}
+              <h5 class="card-title">Cause: Green Spaces</h5>
+            {% elif challenge.cause == 'clean_air_water' %}
+              <h5 class="card-title">Cause: Clean Air and Water</h5>
+            {% elif challenge.cause == 'sustainable_transportation' %}
+              <h5 class="card-title">Cause: Sustainable Transportation</h5>
+            {% elif challenge.cause == 'climate_action' %}
+              <h5 class="card-title">Cause: Climate Action</h5>
+            {% elif challenge.cause == 'healthy_food_systems' %}
+              <h5 class="card-title">Cause: Healthy Food Systems</h5>
+            {% elif challenge.cause == 'energy_efficiency' %}
+              <h5 class="card-title">Cause: Energy Efficiency</h5>
+            {% elif challenge.cause == 'reduced_noise_pollution' %}
+              <h5 class="card-title">Cause: Reduced Noise Pollution</h5>
+            {% elif challenge.cause == 'waste_reduction' %}
+              <h5 class="card-title">Cause: Waste Reduction</h5>
+            {% elif challenge.cause == 'sustainable_housing' %}
+              <h5 class="card-title">Cause: Sustainable Housing</h5>
+            {% elif challenge.cause == 'community_engagement' %}
+              <h5 class="card-title">Cause: Community Engagement</h5>
+            {% else %}
+              <h5 class="card-title">Cause: None</h5>
+            {% endif %}
+
             <p class="card-text">{{challenge.description}}</p>
             <div class="align-items-bottom">
               <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#completeChallengeModal">Complete Challenge</a>
@@ -20,7 +45,7 @@
             <div class="modal fade" id="completeChallengeModal" tabindex="-1" role="dialog" aria-labelledby="completeChallengeModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <form method="post">
+                  <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="modal-header">
                       <h5 class="modal-title" id="completeChallengeModalLabel">Complete Challenge</h5>
@@ -31,8 +56,8 @@
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
-                        <label for="profile-picture">Upload Profile Picture</label>
-                        <input type="file" class="form-control-file" id="profile-picture">
+                        <label for="profile-picture">Upload Challenge Picture</label>
+                        <input type="file" class="form-control-file" id="challenge-picture" name="picture">
                       </div>
                       <div class="form-group">
                         <label for="location">Current Location</label>
@@ -70,7 +95,32 @@
           
         </div>
         <div class="col-md-4">
-          <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="258">
+          {% if challenge.cause == 'Mental_Health' %}
+            <img src="{% static 'img/cause_mentalHealth.jpg' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'green_spaces' %}
+            <img src="{% static 'img/cause_green_spaces.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'clean_air_water' %}
+            <img src="{% static 'img/cause_clean_air_water.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'sustainable_transportation' %}
+            <img src="{% static 'img/cause_sustainable_transportation.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'climate_action' %}
+            <img src="{% static 'img/cause_climate_action.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'healthy_food_systems' %}
+            <img src="{% static 'img/cause_healthy_food_systems.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'energy_efficiency' %}
+            <img src="{% static 'img/cause_energy_efficiency.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'reduced_noise_pollution' %}
+            <img src="{% static 'img/cause_reduce_noise_pollution.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'waste_reduction' %}
+            <img src="{% static 'img/cause_waste_reduction.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'sustainable_housing' %}
+            <img src="{% static 'img/cause_sustainable_housing.png' %}" class="card-img float-right" alt="..." height="258">
+          {% elif challenge.cause == 'community_engagement' %}
+            <img src="{% static 'img/cause_helping_the_needy.png' %}" class="card-img float-right" alt="..." height="258">
+          {% else %}
+            <img src="{% static 'img/cause_muscular_wood_guy.png' %}" class="card-img float-right" alt="..." height="258">
+          {% endif %}
+          
         </div>
       </div>
     </div>
