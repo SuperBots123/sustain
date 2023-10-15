@@ -206,6 +206,10 @@
             <img src="{% static 'img/default_pfp.png' %}" class="img-circle profile-avatar" alt="User avatar" />
           {% endif %}
         </div>
+        <div class="col-sm-12 profile-actions text-right">
+			<button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+		</div>
+        
       </div>
       <div class="content">
         <div class="row">
@@ -295,6 +299,7 @@
                   <div class="user-profile-content">
                     <!-- Begin timeline -->
                     <div class="the-timeline">
+                        
                       {% for challenge in challenges %}
                         <div class="card mb-3">
                           <div class="row no-gutters">
@@ -372,6 +377,47 @@
             </div>
             <!-- End div .box-info -->
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'profiles:profile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="about" class="form-label">About</label>
+              <textarea class="form-control" id="about" name="about" rows="5">{{ user.sustainer.about }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">City</label>
+              <input type="city" class="form-control" id="city" name="city" value="{{ user.sustainer.city }}">
+            </div>
+            <div class="mb-3">
+              {{ form.state.label_tag }}
+              {{ form.state }}
+              {{ form.state.errors }}
+            </div>
+            
+            <div class="mb-3">
+              <label for="linked_in" class="form-label">LinkedIn</label>
+              <input type="linked_in" class="form-control" id="linked_in" name="linked_in" value="{{ user.sustainer.linked_in }}">
+            </div>
+            <div class="mb-3">
+              <label for="profile_picture" class="form-label">Profile Picture</label>
+              <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+          </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
