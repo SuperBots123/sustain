@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 class ProfileView(TemplateView):
-    template_name = 'profiles/profile.html'
+    template_name = 'profiles/new_profile.html'
     
     def get(self, request):
         challenges = Challenge.objects.filter(sustainer=request.user.sustainer)
@@ -29,7 +29,7 @@ class ProfileView(TemplateView):
         else:
             print(form.errors)
         
-        challenges = Challenge.objects.filter(sustainer=request.user.sustainer)
+        challenges = Challenge.objects.filter(sustainer=request.user.sustainer, completion_status=True).order_by('time').reverse()
         context = {
             'challenges': challenges,
             'form': form,
