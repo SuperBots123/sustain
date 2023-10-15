@@ -11,6 +11,7 @@ urlpatterns = [
     path('feed/', include('feed.urls', namespace='feed')),
     path('challenges/', include('challenges.urls', namespace='challenges')),
     path('profile/', include('profiles.urls', namespace='profiles')),
+    path('friends/', include('friends.urls', namespace='friends')),
     path('admin/', admin.site.urls),
 ]
 
