@@ -104,6 +104,12 @@ class Sustainer(models.Model):
         default='default_pfp.png',  # Default image if none is uploaded
         blank=True,  # Makes the field optional
     )
+
+    challenges_completed = models.IntegerField(
+        default=0,
+        null=True,
+        blank=True,
+    )
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'

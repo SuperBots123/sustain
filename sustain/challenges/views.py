@@ -86,7 +86,9 @@ class ChallengeView(TemplateView):
             # challenge.image = challenge_picture
             challenge.time = datetime.now()
             challenge.completionStatus = True
+            request.user.sustainer.challenges_completed += 1
             challenge.save()
+            request.user.sustainer.save()
             return redirect('challenges:challenges')
         
     
