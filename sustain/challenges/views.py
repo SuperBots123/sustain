@@ -66,6 +66,8 @@ class ChallengeView(TemplateView):
             import urllib.request
             import os
             curr_pk = request.POST.get('challenge_pk')
+            print(curr_pk)
+            print('test')
             challenge = Challenge.objects.get(id=curr_pk)
             challenge_location = request.POST.get('location')
             if 'picture' in request.FILES:

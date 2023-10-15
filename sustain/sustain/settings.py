@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'users',
     'profiles',
     'challenges',
+    'fontawesomefree',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
