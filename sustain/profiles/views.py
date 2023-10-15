@@ -13,7 +13,7 @@ class ProfileView(TemplateView):
     template_name = 'profiles/new_profile.html'
     
     def get(self, request):
-        challenges = Challenge.objects.filter(sustainer=request.user.sustainer)
+        challenges = Challenge.objects.filter(sustainer=request.user.sustainer, completionStatus=True).order_by('time').reverse()
         form = EditProfileModelForm(instance=request.user.sustainer)
         context = {
             'challenges': challenges,
@@ -29,7 +29,7 @@ class ProfileView(TemplateView):
         else:
             print(form.errors)
         
-        challenges = Challenge.objects.filter(sustainer=request.user.sustainer, completion_status=True).order_by('time').reverse()
+        challenges = Challenge.objects.filter(sustainer=request.user.sustainer, completionStatus=True).order_by('time').reverse()
         context = {
             'challenges': challenges,
             'form': form,
