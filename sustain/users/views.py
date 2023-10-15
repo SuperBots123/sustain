@@ -60,6 +60,8 @@ class RegisterView(TemplateView):
                                       longitude=-84.3963)
             new_challenge.save()
             return redirect('feed:feed')
+        else:
+            print(form.errors)
         for error in form.errors:
             print(error) 
         return redirect('users:register')

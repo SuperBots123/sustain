@@ -101,7 +101,7 @@ class Sustainer(models.Model):
     
     profile_picture = models.ImageField(
         upload_to='profile_pics/',  # Directory within MEDIA_ROOT where images will be saved
-        default='default.jpg',  # Default image if none is uploaded
+        default='default_pfp.png',  # Default image if none is uploaded
         blank=True,  # Makes the field optional
     )
     
