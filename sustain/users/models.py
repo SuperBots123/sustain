@@ -95,6 +95,15 @@ class Sustainer(models.Model):
         null=True,
         blank=True,
     )
+    points = models.IntegerField(
+        default=0,
+    )
+    
+    profile_picture = models.ImageField(
+        upload_to='profile_pics/',  # Directory within MEDIA_ROOT where images will be saved
+        default='default.jpg',  # Default image if none is uploaded
+        blank=True,  # Makes the field optional
+    )
     
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'

@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block navbar %}
+
 <div class="container">
   <div class="profile-page tx-13">
     <nav class="navbar navbar-expand-lg bg-body-tertiary container sticky-top" id="NavbarContainer">
@@ -21,7 +22,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
+                {% if user.sustainer.profile_picture %}
+  <img src="{{ user.sustainer.profile_picture.url }}" alt="Profile Picture" height="50" class="profile-picture">
+{% else %}
+  <img src="{% static 'img/default_pfp.png' %}" alt="Profile Picture" height="50" class="profile-picture">
+{% endif %}
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{% url 'profiles:profile' %}">Profile</a></li>
@@ -62,6 +67,14 @@
   .profile-picture {
     border: 3px solid #698C41;
     border-radius: 50%;
+    width: 75px;  /* Set the width */
+    height: 75px;  /* Set the height */
+    object-fit: cover;  /* This will make sure the image covers the entire area */
+  }
+
+  .dropdown-item {
+    width: 50%;
+    height: 50%;
   }
 </style>
   <script type="text/javascript"></script>

@@ -18,8 +18,7 @@ class Challenge(models.Model):
         null=True,
         blank=True,
     )
-    time = models.TimeField(
-        auto_now_add=True,
+    time = models.DateTimeField(
         null=True,
         blank=True,
     )
